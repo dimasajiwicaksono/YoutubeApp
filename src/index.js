@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/free-solid-svg-icons';
 
 import Home from './component/Home/Home';
+import SharePage from './component/SharePage/SharePage';
 
 ReactDOM.render(
             // <-- connect to html page -->
@@ -18,6 +19,7 @@ ReactDOM.render(
             <Router>
                 <Switch>
                     <Route exact path = '/' component = {Home} />
+                    <Route path = '/share' component = {SharePage} />
                 </Switch>
             </Router>
             // </Provider>
