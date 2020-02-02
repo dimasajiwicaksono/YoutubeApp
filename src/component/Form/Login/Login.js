@@ -43,7 +43,6 @@ export class Login extends Component {
         localStorage.setItem('password', password)
         localStorage.setItem('message', message);
         window.location.reload();
-        
     }
 
     render() {
