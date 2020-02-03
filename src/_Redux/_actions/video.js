@@ -1,8 +1,8 @@
 import { createAction, createRequestTypes, REQUEST, SUCCESS, FAILURE } from '../_actions/index';
 
-export const VIDEO_LIST = createRequestTypes('VIDEO_LIST');
-export const video = {
-    request: () => createAction(VIDEO_LIST[REQUEST]),
-    success: (response) => createAction(VIDEO_LIST[SUCCESS], {response}),
-    failure: (response) => createAction(VIDEO_LIST[FAILURE], {response}),
+export const MOST_POPULAR = createRequestTypes('MOST_POPULAR');
+export const mostPopular = {
+  request: (amount, loadDescription, nextPageToken) => createAction(MOST_POPULAR[REQUEST], {amount, loadDescription, nextPageToken}),
+  success: (response) => createAction(MOST_POPULAR[SUCCESS], {response}),
+  failure: (response) => createAction(MOST_POPULAR[FAILURE], {response}),
 };

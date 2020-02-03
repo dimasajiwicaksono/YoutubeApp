@@ -1,39 +1,49 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as videoAction from '../../_Redux/_actions/video';
+import { bindActionCreators } from 'redux';
+import {getYoutubeLibraryLoaded} from '../../_Redux/_reducers/api';
+
+
+import HomeContent from './HomeContent'
 import Header from '../NavBar/Header';
 
-import VideoList from '../Content/VideoList'
 
 export class Home extends Component {
-    constructor (){
-        super ();
-        this.state = {
-            DATA : [
-                {id:1, title:'first title', url :'https://www.youtube.com/embed/tgbNymZ7vqY', description: 'Lorem ipsum dolot amet dolor'},
-                {id:2, title:'second title', url :'https://www.youtube.com/embed/orL-w2QBiN8', description: 'Lorem ipsum dolot amet dolor'},
-                {id:3, title:'third title', url :'https://www.youtube.com/embed/d1yfX6VnrSU',description: 'Lorem ipsum dolot amet dolor'},
-                {id:4, title:'fourth title', url :'https://www.youtube.com/embed/tgbNymZ7vqY',description: 'Lorem ipsum dolot amet dolor'}
-            ]
-        }
-    }
     
+    componentDidMount() {
+        if (this.props.youtubeLibraryLoaded) {
+          this.props.fetchMostPopularVideos();
+        }
+      }
+    
+      componentDidUpdate(prevProps) {
+        if (this.props.youtubeLibraryLoaded !== prevProps.youtubeLibraryLoaded) {
+          this.props.fetchMostPopularVideos();
+        }
+      }
+    
+
     render() {
         return (
-            <div className='content'>
+            <div>
                 <Header />
-                <div className='container'>
-                    {this.state.DATA.map((item, index) => 
-                        <VideoList 
-                            title={item.title}
-                            description={item.description}
-                            url={item.url}
-                        />
-                    )}
-                    
-                </div>
+                <HomeContent />
             </div>
         )
     }
 }
 
+function mapStateToProps(state) {
+    return {
+      youtubeLibraryLoaded: getYoutubeLibraryLoaded(state),
+    };
+  }
+  
+  function mapDispatchToProps(dispatch) {
+    const fetchMostPopularVideos = videoAction.mostPopular.request;
+    return bindActionCreators({fetchMostPopularVideos}, dispatch);
+  }
 
-export default Home
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
+

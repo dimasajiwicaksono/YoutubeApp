@@ -19,7 +19,7 @@ export class SharePage extends Component {
                         </Form>
                     </div>
                     <div className='btn-submit' >
-                        <Button variant ='outline-danger' style={styles.button} >cek</Button>
+                        <Button variant ='outline-danger' style={styles.button} >Share Video</Button>
                     </div>
 
                 </div>

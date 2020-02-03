@@ -6,10 +6,10 @@ import reducers from './_reducers';
 
 export function configureStore() {
     const sagaMiddleware = createSagaMiddleware();
-    const composeEnhacers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    const store = createStore ( reducers, composeEnhacers (
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const store = createStore(reducers, composeEnhancers(
         applyMiddleware(sagaMiddleware)
     ));
     sagaMiddleware.run(rootSaga);
     return store;
-}
+  }

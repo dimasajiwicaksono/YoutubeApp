@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import {Row, Col, Card} from 'react-bootstrap';
 
+
 export class VideoList extends Component {
+
     render() {
+        const {id, title, description} = this.props;
         return (
-            <div>
                 <Row>
                     <Col md={6} xs={12} style={styles.video}> 
                         <iframe style={styles.videoList}
-                            src={this.props.url}>
+                            src={`https://youtube.com/embed/${id}`}>
                         </iframe>
                     </Col>
                     <Col md={6} xs={12} style={styles.description}>
                         <Card style={styles.card}>
-                            <p>{this.props.title}</p>
+                            <h4>{title}</h4>
                             <p>Shared by: </p>
                             <p>description</p>
-                            <p>{this.props.description}</p> 
+                            <p>{description}</p> 
                         </Card>
                     </Col>
-                </Row>
-            </div>
+                </Row> 
         )
     }
 }
@@ -37,13 +38,10 @@ const styles = {
         width: 400,
         height: 200
     },
-    description : {
-        
-    },
     card : {
         margin: 20,
         border:'none'
     }
 }
 
-export default VideoList
+export default VideoList;
