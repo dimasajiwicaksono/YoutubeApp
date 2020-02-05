@@ -34,7 +34,6 @@ class App extends Component {
         });
       });
     };
-
     document.body.appendChild(script);
   }
 }

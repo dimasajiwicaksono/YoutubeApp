@@ -35,8 +35,8 @@ const styles = {
         marginTop : 10,
         padding: 10,
         border:'none',
-        width: 400,
-        height: 200
+        width:  600,
+        height: 400
     },
     card : {
         margin: 20,

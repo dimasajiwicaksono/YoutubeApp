@@ -29,6 +29,7 @@ export class Home extends Component {
             <div>
                 <Header />
                 <HomeContent />
+          
             </div>
         )
     }

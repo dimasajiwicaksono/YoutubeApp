@@ -14,18 +14,19 @@ export class Header extends Component {
         return (
             <div className='header' style={styles.body} >
                 <Navbar >
-                    <Col md={9}>
+                    <Col md={6}>
                         <NavbarBrand ><Link to = '/' style={styles.brand}>YouApp</Link></NavbarBrand>
                     </Col>
-                    <Col md={3}>
+                    <Col md={6}>
                         <Nav >
-                            {/* <h1>{email}</h1> */}
+                            
                             {localStorage.getItem('email') ?
                                 (
                                 <div className='nav-group row'>
+                                    <span><p style={styles.email}>{localStorage.getItem('email')}</p></span>
                                     <Button variant='outline-light' style={styles.button}>
                                         <Link to = '/share' style={styles.link}>Share a Video</Link>
-                                    </Button>,
+                                    </Button>
                                     <Button
                                         onClick={this.onHandleClick} 
                                         style={styles.button}> Logout</Button>
@@ -33,6 +34,7 @@ export class Header extends Component {
                                 :
                                 (
                                 <div className='nav-group row'>
+                                    
                                     <LoginModal />,
                                     <RegisterModal />
                                 </div>)
@@ -65,6 +67,10 @@ const styles = {
         borderRadius: 20,
         marginRight : 10,
         marginLeft : 10
+    },
+    email : {
+        color: 'white',
+        marginTop : 10
     }
 }
 
